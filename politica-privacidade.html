@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de Privacidade — Júlia</title>
+  <link rel="icon" href="https://painel.olajulia.com/icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            primary: { DEFAULT: '#1da39c', light: '#2dc0b8', pale: '#f0fafa' },
+            clinic: { heading: '#001d4c', text: '#2d4a6b', muted: '#6b8299', subtle: '#94aab8', border: '#dde8ef' },
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white antialiased font-sans text-clinic-text">
+
+  <header class="border-b border-clinic-border bg-white">
+    <div class="max-w-3xl mx-auto px-6 h-14 flex items-center gap-3">
+      <a href="/" class="flex items-center gap-2 text-sm font-display font-semibold text-clinic-heading hover:text-primary transition-colors">
+        ← Júlia
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-6 py-14">
+    <h1 class="text-3xl font-display font-bold text-clinic-heading mb-2">Política de Privacidade</h1>
+    <p class="text-sm text-clinic-subtle mb-10">Última atualização: maio de 2026 · RMEL Soluções de Tecnologia Ltda</p>
+
+    <div class="prose prose-sm max-w-none text-clinic-text space-y-8">
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">1. Quem somos</h2>
+        <p>A <strong>RMEL Soluções de Tecnologia Ltda</strong> (CNPJ 63.785.682/0001-05) é a operadora do sistema <strong>Júlia</strong> — plataforma de atendimento automatizado via WhatsApp para clínicas de saúde e estética. Para dúvidas sobre privacidade, entre em contato pelo e-mail <a href="mailto:guerra.raffa@gmail.com" class="text-primary underline">guerra.raffa@gmail.com</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">2. Dados coletados</h2>
+        <p class="mb-3">Coletamos dados em duas situações distintas:</p>
+        <p class="font-medium text-clinic-heading mb-1">a) Formulário de contato neste site</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm mb-4">
+          <li>Nome e nome da clínica</li>
+          <li>E-mail</li>
+          <li>Número de WhatsApp (opcional)</li>
+          <li>Mensagem enviada</li>
+        </ul>
+        <p class="font-medium text-clinic-heading mb-1">b) Pacientes atendidos pela Júlia (via WhatsApp das clínicas clientes)</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Número de telefone WhatsApp</li>
+          <li>Nome (fornecido pelo próprio paciente)</li>
+          <li>Histórico de conversas com o bot</li>
+          <li>Data, horário e serviço agendado</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">3. Finalidade do tratamento</h2>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Responder mensagens enviadas pelo formulário de contato</li>
+          <li>Operar o sistema de agendamento automatizado para as clínicas contratantes</li>
+          <li>Enviar lembretes de agendamento aos pacientes</li>
+          <li>Melhorar a qualidade do atendimento automático</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">4. Base legal (LGPD)</h2>
+        <p class="text-sm">O tratamento dos dados é realizado com base no <strong>legítimo interesse</strong> (Art. 7º, IX — execução do contrato ou procedimentos preliminares) e no <strong>consentimento</strong> do titular ao enviar o formulário ou interagir com o bot.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">5. Compartilhamento de dados</h2>
+        <p class="text-sm">Os dados <strong>não são vendidos ou compartilhados com terceiros</strong> para fins comerciais. Utilizamos apenas os seguintes prestadores de serviço essenciais à operação:</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm mt-2">
+          <li><strong>Resend</strong> — envio de e-mails de notificação (dados necessários: e-mail do destinatário)</li>
+          <li><strong>Cloudflare</strong> — infraestrutura do site e workers (dados de acesso em logs)</li>
+          <li><strong>MEGA-API</strong> — gateway WhatsApp (mensagens transmitidas em trânsito)</li>
+          <li><strong>OpenAI</strong> — processamento de linguagem natural para o bot (conteúdo das mensagens)</li>
+        </ul>
+        <p class="text-sm mt-3">Todos esses parceiros possuem políticas de privacidade próprias e tratam os dados apenas conforme necessário para a prestação do serviço.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">6. Armazenamento e segurança</h2>
+        <p class="text-sm">Os dados são armazenados em servidores localizados nos Estados Unidos (Hetzner Cloud — Ashburn, VA) com acesso restrito por autenticação. Os dados de cada clínica são isolados entre si (arquitetura multi-tenant). Utilizamos conexões HTTPS/TLS em todos os pontos de acesso.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">7. Direitos do titular</h2>
+        <p class="text-sm mb-3">Nos termos da LGPD (Lei 13.709/2018), você tem direito a:</p>
+        <ul class="list-disc pl-5 space-y-1 text-sm">
+          <li>Confirmar a existência de tratamento dos seus dados</li>
+          <li>Acessar os dados que possuímos sobre você</li>
+          <li>Corrigir dados incompletos, inexatos ou desatualizados</li>
+          <li>Solicitar a anonimização, bloqueio ou eliminação dos seus dados</li>
+          <li>Revogar o consentimento a qualquer momento</li>
+        </ul>
+        <p class="text-sm mt-3">Para exercer qualquer desses direitos, envie um e-mail para <a href="mailto:guerra.raffa@gmail.com" class="text-primary underline">guerra.raffa@gmail.com</a> com o assunto "LGPD — [seu direito]".</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">8. Retenção dos dados</h2>
+        <p class="text-sm">Os dados do formulário de contato são mantidos pelo tempo necessário para responder à sua solicitação e, por até 12 meses, para fins de registro. Os dados dos pacientes atendidos pela Júlia são mantidos pelo tempo definido no contrato com a clínica contratante, respeitando obrigações legais aplicáveis.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">9. Alterações nesta política</h2>
+        <p class="text-sm">Esta política pode ser atualizada periodicamente. A data de "última atualização" no topo da página indica a versão vigente. Mudanças relevantes serão comunicadas pelo e-mail cadastrado, quando aplicável.</p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-display font-semibold text-clinic-heading mb-3">10. Contato</h2>
+        <p class="text-sm">
+          RMEL Soluções de Tecnologia Ltda<br>
+          CNPJ 63.785.682/0001-05<br>
+          E-mail: <a href="mailto:guerra.raffa@gmail.com" class="text-primary underline">guerra.raffa@gmail.com</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="py-8 px-6 border-t border-clinic-border bg-white text-center text-xs text-clinic-subtle">
+    <a href="/" class="text-primary hover:underline font-display font-semibold">Júlia</a>
+    · RMEL Soluções de Tecnologia Ltda · CNPJ 63.785.682/0001-05
+  </footer>
+</body>
+</html>

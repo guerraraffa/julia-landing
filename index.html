@@ -54,8 +54,11 @@
     .faq-item.open .faq-chevron { transform: rotate(180deg); }
     .faq-chevron { transition: transform 0.3s ease; }
     /* WhatsApp green */
-    .bg-whatsapp { background-color: #25D366; }
-    .hover\:bg-whatsapp-dark:hover { background-color: #1ebe5b; }
+    .bg-whatsapp { background-color: #25D366 !important; }
+    .bg-whatsapp:hover { background-color: #1ebe5b !important; }
+    .hover\:bg-whatsapp-dark:hover { background-color: #1ebe5b !important; }
+    a[href*="wa.me"] { background-color: #25D366; color: #fff; }
+    a[href*="wa.me"]:hover { background-color: #1ebe5b; }
   </style>
 </head>
 
@@ -95,15 +98,18 @@
            class="w-24 h-24 sm:w-28 sm:h-28 rounded-[1.5rem] shadow-2xl ring-4 ring-white/20 mb-7"
            onerror="this.style.display='none'">
 
-      <p class="text-sm font-display font-semibold text-white/60 uppercase tracking-widest mb-4">
-        Atendimento automático pelo WhatsApp
-      </p>
-      <h1 class="text-4xl sm:text-5xl font-display font-bold text-white leading-tight mb-6">
-        Sua clínica atendendo<br class="hidden sm:block"> 24 horas por dia.
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-sm font-display font-semibold text-white/60 uppercase tracking-widest">Atendimento pelo WhatsApp</span>
+        <span class="text-xs font-display font-bold bg-primary text-white px-2 py-0.5 rounded-full uppercase tracking-wide">IA</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-display font-bold text-white leading-tight mb-3">
+        Olá, Júlia!
       </h1>
+      <p class="text-xl sm:text-2xl font-display font-semibold text-white/80 mb-6">
+        Seu negócio atendendo 24 horas por dia.
+      </p>
       <p class="text-lg text-white/70 mb-10 max-w-xl">
-        Júlia agenda, responde dúvidas e gerencia cancelamentos pelo WhatsApp —
-        sem precisar de atendente. Você foca no que importa, seus clientes ficam satisfeitos.
+        Júlia agenda, reagenda, cancela, responde dúvidas, envia a localização e transfere para um atendente humano quando necessário — tudo pelo WhatsApp, sem precisar de ninguém do outro lado.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4">
@@ -152,7 +158,7 @@
       <p class="text-center text-xs font-display font-semibold text-clinic-subtle uppercase tracking-widest mb-8">
         Resultados reais — clínica de estética, 90 dias de operação
       </p>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center mb-8">
         <div>
           <p class="text-3xl sm:text-4xl font-display font-bold text-primary">141</p>
           <p class="text-xs text-clinic-muted mt-1">agendamentos<br>via WhatsApp</p>
@@ -169,6 +175,10 @@
           <p class="text-3xl sm:text-4xl font-display font-bold text-primary">+161%</p>
           <p class="text-xs text-clinic-muted mt-1">pico de agendamentos<br>no 3º mês</p>
         </div>
+      </div>
+      <div class="max-w-lg mx-auto bg-white border border-clinic-border rounded-2xl px-6 py-4 text-center shadow-card">
+        <p class="text-xs font-display font-semibold text-primary uppercase tracking-widest mb-2">Caso real</p>
+        <p class="text-sm text-clinic-muted">Às <strong class="text-clinic-heading">04h00 do Dia dos Namorados</strong>, uma cliente agendou manicure e pedicure pelo WhatsApp. <strong class="text-clinic-heading">A Júlia confirmou o horário enquanto a proprietária dormia.</strong> Isso é o que atendimento 24 horas significa na prática.</p>
       </div>
     </div>
   </section>
@@ -206,15 +216,16 @@
           Converse com a Júlia antes de decidir
         </h2>
         <p class="text-clinic-muted mb-6">
-          Nossa clínica de demonstração está disponível 24 horas. Envie uma mensagem e veja exatamente como seus clientes serão atendidos — desde o agendamento até a confirmação.
+          A demo está disponível 24 horas. Envie uma mensagem e veja exatamente como seus clientes serão atendidos — do agendamento ao lembrete. Funciona para clínicas de estética, odontologia, psicologia, veterinária e qualquer negócio com agenda e serviços.
         </p>
         <a href="https://wa.me/5511959065710?text=Ol%C3%A1%20J%C3%BAlia%21%20Quero%20agendar%20uma%20consulta."
            target="_blank"
-           class="inline-flex items-center gap-2 bg-whatsapp hover:bg-whatsapp-dark text-white font-display font-semibold rounded-full px-8 py-4 text-base transition-colors shadow-lg">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.534 5.851L0 24l6.335-1.521A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.359-.213-3.72.893.935-3.612-.234-.372A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
-          Falar com a clínica demo
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5b] text-white font-display font-semibold rounded-full px-8 py-4 text-base transition-colors shadow-lg cursor-pointer">
+          <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.558 4.121 1.534 5.851L0 24l6.335-1.521A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.373l-.359-.213-3.72.893.935-3.612-.234-.372A9.818 9.818 0 112 12 9.818 9.818 0 0112 21.818z"/></svg>
+          Falar com a Júlia agora →
         </a>
-        <p class="text-xs text-clinic-subtle mt-3">Clínica de demonstração — atendimento real, dados fictícios</p>
+        <p class="text-xs text-clinic-subtle mt-3">Demonstração real · dados fictícios · sem compromisso</p>
       </div>
     </div>
   </section>
@@ -255,7 +266,7 @@
             <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
           </div>
           <h3 class="font-display font-semibold text-clinic-heading mb-2">Lembretes automáticos</h3>
-          <p class="text-sm text-clinic-muted">Avisa o paciente 3 dias antes e no dia do procedimento — reduz faltas sem nenhum esforço manual.</p>
+          <p class="text-sm text-clinic-muted">Envia lembretes 3 dias antes, no dia e horas antes do procedimento. O cliente pode confirmar ou cancelar diretamente na mensagem.</p>
         </div>
 
         <div class="p-6 rounded-2xl border border-clinic-border bg-white hover:border-primary-light hover:shadow-card-md transition-all">
@@ -272,6 +283,18 @@
           </div>
           <h3 class="font-display font-semibold text-clinic-heading mb-2">Dados seguros — LGPD</h3>
           <p class="text-sm text-clinic-muted">Infraestrutura em conformidade com a LGPD. Dados dos seus clientes são seus — nunca compartilhados.</p>
+        </div>
+
+        <div class="p-6 rounded-2xl border border-primary-light bg-primary-pale hover:shadow-card-md transition-all sm:col-span-3">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-display font-semibold text-clinic-heading mb-1">Oportunidades identificadas pelo profissional</h3>
+              <p class="text-sm text-clinic-muted">Durante o atendimento, o profissional pode registrar procedimentos futuros indicados para o cliente. A Júlia acompanha esses registros e, no momento certo, inicia a conversa para transformar a indicação em agendamento — sem que você precise lembrar ou cobrar manualmente.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -322,7 +345,7 @@
             <svg class="faq-chevron w-5 h-5 text-clinic-subtle flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
-            <p class="px-6 pb-4 text-sm text-clinic-muted">Sim — você precisa de um número de WhatsApp exclusivo para a clínica (pode ser uma linha pré-paga). Nós cuidamos de toda a configuração do gateway de mensagens.</p>
+            <p class="px-6 pb-4 text-sm text-clinic-muted">Sim — você precisa de um número de WhatsApp dedicado para o atendimento (pode ser uma linha pré-paga simples). A nossa equipe cuida de toda a parte técnica para você: configuração, integração e testes. Você não precisa entender de tecnologia.</p>
           </div>
         </div>
 
@@ -332,7 +355,7 @@
             <svg class="faq-chevron w-5 h-5 text-clinic-subtle flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
-            <p class="px-6 pb-4 text-sm text-clinic-muted">A Júlia cuida do volume operacional — agendamentos, confirmações, lembretes e dúvidas simples — liberando a equipe para o que realmente exige atenção humana. Quando necessário, ela transfere a conversa para um atendente sem perder o contexto.</p>
+            <p class="px-6 pb-4 text-sm text-clinic-muted">Depende do tamanho da sua equipe. Se você trabalha sozinho ou em uma equipe pequena, a Júlia garante que nenhum cliente fique sem resposta enquanto você está em atendimento — sem precisar interromper nada. Se você tem recepcionista, a Júlia assume o volume repetitivo (agendamentos, lembretes, dúvidas simples) e libera a equipe para o que exige atenção de verdade. Em ambos os casos, quando a situação pede um humano, ela transfere a conversa sem perder o contexto.</p>
           </div>
         </div>
 
@@ -362,7 +385,7 @@
             <svg class="faq-chevron w-5 h-5 text-clinic-subtle flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div class="faq-answer">
-            <p class="px-6 pb-4 text-sm text-clinic-muted">Sim. Os dados são isolados por clínica (multi-tenant), armazenados em servidores no Brasil, e tratados em conformidade com a LGPD. Nenhuma informação é compartilhada com terceiros. Consulte nossa <a href="/politica-privacidade" class="text-primary underline">Política de Privacidade</a>.</p>
+            <p class="px-6 pb-4 text-sm text-clinic-muted">Sim. Os dados da sua clínica e dos seus clientes ficam armazenados em servidores no Brasil, separados dos dados de outras clínicas. Nenhuma informação é compartilhada com terceiros. Operamos dentro das regras da LGPD — a lei brasileira de proteção de dados. Consulte nossa <a href="/politica-privacidade" class="text-primary underline">Política de Privacidade</a>.</p>
           </div>
         </div>
 

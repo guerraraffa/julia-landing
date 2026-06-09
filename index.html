@@ -38,9 +38,7 @@
         "applicationCategory": "BusinessApplication",
         "inLanguage": "pt-BR",
         "offers": [
-          { "@type": "Offer", "name": "Essencial", "price": "597", "priceCurrency": "BRL" },
-          { "@type": "Offer", "name": "Profissional", "price": "812", "priceCurrency": "BRL" },
-          { "@type": "Offer", "name": "Clínica", "price": "1197", "priceCurrency": "BRL" }
+          { "@type": "AggregateOffer", "name": "Júlia Pro", "lowPrice": "350", "highPrice": "1230", "priceCurrency": "BRL" }
         ],
         "provider": { "@type": "Organization", "name": "RMEL Soluções de Tecnologia Ltda", "url": "https://olajulia.com" }
       },
@@ -448,33 +446,49 @@
   <!-- ── PREÇOS ──────────────────────────────────────── -->
   <section class="py-20 px-6 bg-white" id="precos">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
+      <div class="text-center mb-12">
         <p class="text-sm font-display font-semibold text-primary uppercase tracking-widest mb-3">Planos</p>
         <h2 class="text-2xl sm:text-3xl font-display font-bold text-clinic-heading mb-3">Simples, transparente, sem surpresas</h2>
-        <p class="text-clinic-muted max-w-lg mx-auto">Escolha o plano que se encaixa no tamanho da sua clínica. Todos incluem implantação assistida e suporte no período de adaptação.</p>
+        <p class="text-clinic-muted max-w-lg mx-auto">Agendamento automático incluso em todos os planos. Sem cobrança por profissional, sem cobrança por agendamento.</p>
       </div>
 
-      <div class="grid sm:grid-cols-3 gap-6 items-stretch">
+      <!-- Volume selector -->
+      <div class="flex justify-center mb-10">
+        <div class="inline-flex flex-col sm:flex-row items-center gap-3 bg-primary-pale border border-clinic-border rounded-2xl px-6 py-4 w-full max-w-xl">
+          <label for="volume-select" class="text-sm font-display font-semibold text-clinic-heading whitespace-nowrap">Quantos pacientes atende por mês?</label>
+          <select id="volume-select" onchange="atualizarPreco()"
+            class="w-full border border-clinic-border rounded-xl px-4 py-2.5 text-sm font-display font-semibold text-clinic-heading bg-white focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
+            <option value="100">até 100 pacientes</option>
+            <option value="200" selected>até 200 pacientes</option>
+            <option value="400">até 400 pacientes</option>
+            <option value="600">até 600 pacientes</option>
+            <option value="900">até 900 pacientes</option>
+            <option value="1200">até 1.200 pacientes</option>
+          </select>
+        </div>
+      </div>
 
-        <!-- Essencial -->
-        <div class="pricing-card flex flex-col rounded-2xl border border-clinic-border bg-white p-8 shadow-card" data-plano="Essencial" style="transition:outline 0.2s">
-          <div class="plano-badge items-center gap-2 mb-3" style="display:none;color:#1da39c">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span style="font-size:0.72rem;font-weight:700;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:0.05em">Você escolheu este</span>
+      <!-- Cards -->
+      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
+
+        <!-- Júlia Pro -->
+        <div class="pricing-card flex flex-col rounded-2xl border-2 border-primary bg-white p-8 shadow-card-md relative" data-plano="Pro">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+            <span class="bg-primary text-white text-xs font-display font-bold px-4 py-1 rounded-full uppercase tracking-wide">Mais indicado</span>
           </div>
           <div class="mb-6">
-            <p class="text-xs font-display font-semibold text-clinic-subtle uppercase tracking-widest mb-2">Essencial</p>
-            <p class="text-clinic-muted text-sm mb-5">Para profissional solo ou clínica pequena sem recepcionista.</p>
+            <p class="text-xs font-display font-semibold text-primary uppercase tracking-widest mb-2">Júlia Pro</p>
+            <p id="pro-desc" class="text-clinic-muted text-sm mb-5">Para clínica com até 200 pacientes ativos por mês.</p>
             <div class="border-t border-clinic-border pt-5">
-              <p class="text-3xl font-display font-bold text-clinic-heading">R$ 597<span class="text-base font-normal text-clinic-muted">/mês</span></p>
-              <p class="text-xs text-clinic-subtle mt-1">Setup assistido R$ 300 · auto-configuração gratuita</p>
-              <p class="text-xs font-display font-semibold text-clinic-muted mt-2">Até 320 conversas/mês <span class="font-normal">(~120 pacientes ativos)</span></p>
+              <p class="text-3xl font-display font-bold text-clinic-heading">R$&nbsp;<span id="pro-price">430</span><span class="text-base font-normal text-clinic-muted">/mês</span></p>
+              <p class="text-xs text-clinic-subtle mt-1">Setup assistido <span id="pro-setup">R$ 300</span> · auto-configuração gratuita</p>
+              <p id="pro-limite" class="text-xs font-display font-semibold text-clinic-muted mt-2">Até 200 pacientes únicos/mês · excedente R$ 2,00/pac</p>
             </div>
           </div>
           <ul class="space-y-3 text-sm text-clinic-muted flex-1 mb-8">
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Agendamento, cancelamento e reagendamento
+              Agendamento, cancelamento e reagendamento automático
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -486,100 +500,58 @@
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Envio de localização
+              Painel de gestão + histórico de conversas
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Painel de gestão (agenda + conversas)
+              Atendimento humano integrado
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Até 2 profissionais · 1 número WhatsApp
+              <span id="pro-profissionais">3 profissionais · 5 usuários do painel</span>
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Atendimento humano integrado (transferência com contexto)
+              <span id="pro-suporte">Suporte WhatsApp em até 48h úteis</span>
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Oportunidades identificadas → agendamento automático
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Relatórios de desempenho
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Suporte em até 48h úteis
+              <span id="pro-historico">Histórico de conversas: 90 dias</span>
             </li>
           </ul>
-          <a href="#contato" onclick="escolherPlano('Essencial'); return false;"
-             class="block text-center border border-primary text-primary font-display font-semibold rounded-xl px-6 py-3 text-sm hover:bg-primary hover:text-white transition-colors">
-            Entrar em contato
-          </a>
-        </div>
-
-        <!-- Profissional -->
-        <div class="pricing-card flex flex-col rounded-2xl border-2 border-primary bg-white p-8 shadow-card-md relative" data-plano="Profissional">
-          <div class="plano-badge items-center gap-2 mb-3" style="display:none;color:#1da39c">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span style="font-size:0.72rem;font-weight:700;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:0.05em">Você escolheu este</span>
-          </div>
-          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-            <span id="badge-mais-indicado" class="bg-primary text-white text-xs font-display font-bold px-4 py-1 rounded-full uppercase tracking-wide">Mais indicado</span>
-          </div>
-          <div class="mb-6">
-            <p class="text-xs font-display font-semibold text-primary uppercase tracking-widest mb-2">Profissional</p>
-            <p class="text-clinic-muted text-sm mb-5">Para clínica com 2 a 5 profissionais, com ou sem recepcionista.</p>
-            <div class="border-t border-clinic-border pt-5">
-              <p class="text-3xl font-display font-bold text-clinic-heading">R$ 812<span class="text-base font-normal text-clinic-muted">/mês</span></p>
-              <p class="text-xs text-clinic-subtle mt-1">Setup assistido R$ 500 · auto-configuração gratuita</p>
-              <p class="text-xs font-display font-semibold text-clinic-muted mt-2">Até 720 conversas/mês <span class="font-normal">(~270 pacientes ativos)</span></p>
-            </div>
-          </div>
-          <ul class="space-y-3 text-sm text-clinic-muted flex-1 mb-8">
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Tudo do Essencial
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Até 5 profissionais
-            </li>
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Suporte em até 24h úteis
-            </li>
-          </ul>
-          <a href="#contato" onclick="escolherPlano('Profissional'); return false;"
+          <a href="#contato" onclick="escolherPlano('Pro'); return false;"
              class="block text-center bg-primary hover:bg-primary-light text-white font-display font-semibold rounded-xl px-6 py-3 text-sm transition-colors shadow-sm">
             Entrar em contato
           </a>
         </div>
 
-        <!-- Clínica -->
-        <div class="pricing-card flex flex-col rounded-2xl border border-clinic-border bg-white p-8 shadow-card" data-plano="Clínica">
-          <div class="plano-badge items-center gap-2 mb-3" style="display:none;color:#1da39c">
-            <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span style="font-size:0.72rem;font-weight:700;font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:0.05em">Você escolheu este</span>
-          </div>
+        <!-- Empresarial -->
+        <div class="pricing-card flex flex-col rounded-2xl border border-clinic-border bg-white p-8 shadow-card" data-plano="Empresarial">
           <div class="mb-6">
-            <p class="text-xs font-display font-semibold text-clinic-subtle uppercase tracking-widest mb-2">Clínica</p>
-            <p class="text-clinic-muted text-sm mb-5">Para clínica com 6+ profissionais ou múltiplas unidades.</p>
+            <p class="text-xs font-display font-semibold text-clinic-subtle uppercase tracking-widest mb-2">Empresarial</p>
+            <p class="text-clinic-muted text-sm mb-5">Para redes de clínicas, franquias e grandes operações com necessidades personalizadas.</p>
             <div class="border-t border-clinic-border pt-5">
-              <p class="text-3xl font-display font-bold text-clinic-heading">R$ 1.197<span class="text-base font-normal text-clinic-muted">/mês</span></p>
-              <p class="text-xs text-clinic-subtle mt-1">Setup assistido R$ 800 · auto-configuração gratuita</p>
-              <p class="text-xs font-display font-semibold text-clinic-muted mt-2">Até 1.000 conversas/mês <span class="font-normal">(~370 pacientes ativos)</span></p>
+              <p class="text-3xl font-display font-bold text-clinic-heading">Sob consulta</p>
+              <p class="text-xs text-clinic-subtle mt-1">&nbsp;</p>
+              <p class="text-xs font-display font-semibold text-clinic-muted mt-2">Acima de 1.200 pacientes/mês</p>
             </div>
           </div>
           <ul class="space-y-3 text-sm text-clinic-muted flex-1 mb-8">
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Tudo do Profissional
+              Tudo do Júlia Pro
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Profissionais ilimitados
+              Múltiplas unidades no mesmo painel
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Usuários e profissionais ilimitados
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Integrações personalizadas
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -587,18 +559,18 @@
             </li>
             <li class="flex items-start gap-2.5">
               <svg class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Suporte em até 16h úteis
+              SLA de suporte dedicado
             </li>
           </ul>
-          <a href="#contato" onclick="escolherPlano('Clínica'); return false;"
+          <a href="#contato" onclick="escolherPlano('Empresarial'); return false;"
              class="block text-center border border-primary text-primary font-display font-semibold rounded-xl px-6 py-3 text-sm hover:bg-primary hover:text-white transition-colors">
-            Entrar em contato
+            Falar com especialista
           </a>
         </div>
 
       </div>
 
-      <p class="text-center text-xs text-clinic-subtle mt-8">Todos os planos incluem integração ao WhatsApp e período mínimo de contrato. Custo com a linha telefônica é da clínica.</p>
+      <p class="text-center text-xs text-clinic-subtle mt-8">Todos os planos incluem integração ao WhatsApp e período mínimo de 3 meses. Custo com a linha telefônica é da clínica.</p>
     </div>
   </section>
 
@@ -712,20 +684,49 @@
       });
     });
 
+    // Volume pricing data
+    var PLANOS = {
+      '100':  { price: 350,  setup: 200, label: '100',   desc: 'Para profissional solo ou clínica com consultório único.', profissionais: '1 profissional · 2 usuários do painel',   suporte: 'por e-mail em até 72h úteis', historico: '60 dias' },
+      '200':  { price: 430,  setup: 300, label: '200',   desc: 'Para clínica com até 200 pacientes ativos por mês.',       profissionais: '3 profissionais · 5 usuários do painel',   suporte: 'WhatsApp em até 48h úteis',   historico: '90 dias' },
+      '400':  { price: 590,  setup: 500, label: '400',   desc: 'Para clínica com 4 a 5 profissionais.',                   profissionais: '5 profissionais · 8 usuários do painel',   suporte: 'WhatsApp em até 24h úteis',   historico: '90 dias' },
+      '600':  { price: 750,  setup: 500, label: '600',   desc: 'Para clínica com 6 a 8 profissionais.',                   profissionais: '8 profissionais · 12 usuários do painel',  suporte: 'WhatsApp em até 16h úteis',   historico: '120 dias' },
+      '900':  { price: 990,  setup: 800, label: '900',   desc: 'Para clínica ou rede com até 12 profissionais.',          profissionais: '12 profissionais · 17 usuários do painel', suporte: 'WhatsApp em até 8h úteis',    historico: '120 dias' },
+      '1200': { price: 1230, setup: 800, label: '1.200', desc: 'Para grande clínica com até 15 profissionais.',           profissionais: '15 profissionais · 22 usuários do painel', suporte: 'WhatsApp em até 4h úteis',    historico: '120 dias' },
+    };
+
+    function fmtPrice(n) {
+      return n >= 1000 ? n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') : String(n);
+    }
+
+    function atualizarPreco() {
+      var vol = document.getElementById('volume-select').value;
+      var p = PLANOS[vol];
+      if (!p) return;
+      document.getElementById('pro-price').textContent        = fmtPrice(p.price);
+      document.getElementById('pro-setup').textContent        = 'R$ ' + fmtPrice(p.setup);
+      document.getElementById('pro-limite').textContent       = 'Até ' + p.label + ' pacientes únicos/mês · excedente R$ 2,00/pac';
+      document.getElementById('pro-desc').textContent         = p.desc;
+      document.getElementById('pro-profissionais').textContent = p.profissionais;
+      document.getElementById('pro-suporte').textContent      = 'Suporte ' + p.suporte;
+      document.getElementById('pro-historico').textContent    = 'Histórico de conversas: ' + p.historico;
+    }
+
     // Plan selection
-    function escolherPlano(nome) {
+    function escolherPlano(tipo) {
       document.querySelectorAll('.pricing-card').forEach(function(card) {
         card.style.outline = '';
-        card.querySelector('.plano-badge').style.display = 'none';
+        card.style.outlineOffset = '';
       });
-      var badge = document.getElementById('badge-mais-indicado');
-      if (badge) badge.style.display = 'none';
-      var selected = document.querySelector('.pricing-card[data-plano="' + nome + '"]');
-      selected.style.outline = '3px solid #1da39c';
-      selected.style.outlineOffset = '2px';
-      selected.querySelector('.plano-badge').style.display = 'flex';
-      document.getElementById('plano-selecionado').value = nome;
-      document.getElementById('contato').scrollIntoView({behavior: 'smooth'});
+      var selected = document.querySelector('.pricing-card[data-plano="' + tipo + '"]');
+      if (selected) {
+        selected.style.outline = '3px solid #1da39c';
+        selected.style.outlineOffset = '2px';
+      }
+      var nomePlano = tipo === 'Pro'
+        ? 'Júlia Pro — ' + document.getElementById('volume-select').options[document.getElementById('volume-select').selectedIndex].text
+        : tipo;
+      document.getElementById('plano-selecionado').value = nomePlano;
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
     }
 
     // Contact form
